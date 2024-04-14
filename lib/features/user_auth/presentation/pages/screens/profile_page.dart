@@ -5,8 +5,9 @@ import "package:shared_preferences/shared_preferences.dart";
 import 'package:firebase_auth/firebase_auth.dart';
 // import "../providers/dio_provider.dart";
 import 'package:cloud_firestore/cloud_firestore.dart';
-
+import 'package:healthapp/features/user_auth/presentation/pages/screens/user_details.dart';
 import 'package:healthapp/features/user_auth/presentation/pages/screens/appointment_page.dart';
+import 'package:healthapp/features/user_auth/presentation/pages/screens/user_details.dart';
 
 class ProfilePage extends StatefulWidget {
   ProfilePage({Key? key}) : super(key: key);
@@ -118,7 +119,12 @@ class _ProfilePageState extends State<ProfilePage> {
                                   width: 20,
                                 ),
                                 TextButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => UserDetailPage()),
+                                    );
+                                  },
                                   child: const Text(
                                     "Profile",
                                     style: TextStyle(

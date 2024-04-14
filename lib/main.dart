@@ -12,6 +12,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:healthapp/features/user_auth/presentation/pages/utils/config.dart';
 import 'package:healthapp/main_layout.dart';
 
+import 'features/app/splash_screen/splash_screen.dart';
+
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -72,7 +74,11 @@ class MyApp extends StatelessWidget {
         //   return BookingPage(user: user, doctorId: doctorId );
         // },
         'booking_page': (context) => BookingPage(),
-        '/': (context) => SignUpPage(), // Default route is SignUpPage
+        '/signup': (context) => SignUpPage(), // Default route is SignUpPage
+        '/': (context) => SplashScreen(
+          // Here, you can decide whether to show the LoginPage or HomePage based on user authentication
+            child: LoginPage(),
+        ),
       },
       // onGenerateRoute: (settings) {
       //   // If the route is a booking page route...

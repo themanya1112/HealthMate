@@ -83,7 +83,7 @@ flutter:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   assets:
-    - assets/images/
+    - assets/images/splash/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
@@ -134,7 +134,10 @@ flutter_native_splash:
 
   # The image parameter allows you to specify an image used in the splash screen.  It must be a
   # png file and should be sized for 4x pixel density.
-  image: assets/images/splash/logo.jpg
+  image:
+    -assets/images/splash/logo.jpg
+    -assets/images/splash/profile1.jpeg
+    -assets/images/splash/profile2.jpeg
 
   # The branding property allows you to specify an image used as branding in the splash screen.
   # It must be a png file. It is supported for Android, iOS and the Web.  For Android 12,
@@ -166,10 +169,13 @@ flutter_native_splash:
     # 640 pixels in diameter.
     # App icon without an icon background: This should be 1152×1152 pixels, and fit within a circle
     # 768 pixels in diameter.
-    image: assets/images/splash/logo.jpg
+    image:
+        -assets/images/splash/logo.jpg
+        -assets/images/splash/profile1.jpeg
+        -assets/images/splash/profile2.jpeg
 
     # Splash screen background color.
-    color: "#FFBF4D"
+    color: "#4CDFD2"
 
   # App icon background color.
   #icon_background_color: "#111111"
