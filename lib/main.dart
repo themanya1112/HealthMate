@@ -4,11 +4,7 @@ import 'package:healthapp/features/user_auth/presentation/admin/admin_page.dart'
 import 'package:healthapp/features/user_auth/presentation/pages/screens/booking_page.dart';
 import 'package:healthapp/features/user_auth/presentation/pages/screens/home_page.dart';
 import 'package:healthapp/features/user_auth/presentation/pages/screens/login_page.dart';
-import 'package:healthapp/features/user_auth/presentation/pages/screens/delete.dart';
-import 'package:healthapp/features/user_auth/presentation/pages/screens/qr_gen.dart';
 import 'package:healthapp/features/user_auth/presentation/pages/screens/signup_page.dart';
-import 'package:healthapp/features/user_auth/presentation/pages/screens/appointment_page.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:healthapp/features/user_auth/presentation/pages/utils/config.dart';
 import 'package:healthapp/main_layout.dart';
 
@@ -32,9 +28,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'HealthMate',
-      navigatorKey: navigatorKey, // Assigning the navigatorKey to the MaterialApp
+      navigatorKey: navigatorKey,
       theme: ThemeData(
-        //pre-define input decoration
         inputDecorationTheme: const InputDecorationTheme(
           focusColor: Config.primaryColor,
           border: Config.outlinedBorder,
@@ -55,47 +50,18 @@ class MyApp extends StatelessWidget {
           type: BottomNavigationBarType.fixed,
         ),
       ),
-      initialRoute: '/', // Initial route is SignUpPage
+      initialRoute: '/',
       routes: {
         '/login': (context) => LoginPage(),
         'main':(context) => const MainLayout(),
         '/admin': (context) => AdminPage(),
         '/home': (context) => HomePage(),
-        '/delete': (context) => DeleteAccount(),
-        // '/booking_page': (context) => BookingPage(user: ModalRoute.of(context)!.settings.arguments as User),
-        // '/booking_page': (context) {
-        //   final args = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
-        //   // final user= ModalRoute.of(context)!.settings.arguments as User;
-        //   final doctorId = args['doctor_id'];
-        //   final user =args['user'];
-        //   print("User: $user");
-        //   print("Doctor ID: $doctorId");
-        //   // final doctorId = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
-        //   return BookingPage(user: user, doctorId: doctorId );
-        // },
         'booking_page': (context) => BookingPage(),
-        '/signup': (context) => SignUpPage(), // Default route is SignUpPage
+        '/signup': (context) => SignUpPage(),
         '/': (context) => SplashScreen(
-          // Here, you can decide whether to show the LoginPage or HomePage based on user authentication
             child: LoginPage(),
         ),
       },
-      // onGenerateRoute: (settings) {
-      //   // If the route is a booking page route...
-      //   if (settings.name!.startsWith('/booking_page')) {
-      //     final args = settings.arguments as Map<String, dynamic>;
-      //     final user = args['user'];
-      //     final doctorId = args['doctor_id'];
-      //     // Return the BookingPage for this doctor.
-      //     return MaterialPageRoute(
-      //       builder: (context) {
-      //         return BookingPage(user: user, doctorId: doctorId);
-      //       },
-      //     );
-      //   }
-      //   // Handle other routes...
-      //   return null;
-      // },
     );
   }
 }

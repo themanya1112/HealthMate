@@ -1,13 +1,8 @@
-import "package:healthapp/main.dart";
 import "package:healthapp/features/user_auth/presentation/pages/utils/config.dart";
 import "package:flutter/material.dart";
-import "package:shared_preferences/shared_preferences.dart";
 import 'package:firebase_auth/firebase_auth.dart';
-// import "../providers/dio_provider.dart";
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:healthapp/features/user_auth/presentation/pages/screens/user_details.dart';
 import 'package:healthapp/features/user_auth/presentation/pages/screens/appointment_page.dart';
-import 'package:healthapp/features/user_auth/presentation/pages/screens/user_details.dart';
 
 class ProfilePage extends StatefulWidget {
   ProfilePage({Key? key}) : super(key: key);
@@ -35,10 +30,10 @@ class _ProfilePageState extends State<ProfilePage> {
           .collection('users')
           .doc(user.uid)
           .get();
-      // Extract the username from the user's document
+
       setState(() {
         username = userData['username'] ??
-            'idk'; // Replace 'username' with the actual field name in your Firestore document
+            'Manya';
       });
     }
   }
@@ -59,13 +54,13 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                   CircleAvatar(
                     radius: 65.0,
-                    backgroundColor: Colors.white,
+                    backgroundImage: AssetImage("assets/images/splash/profile3.jpeg"),
                   ),
                   SizedBox(
                     height: 10,
                   ),
                   Text(
-                    'manya',
+                    'Manya',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 20,
@@ -75,7 +70,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     height: 10,
                   ),
                   Text(
-                    '23 Years Old | Female',
+                    '19 Years Old | Female',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 15,
@@ -119,12 +114,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   width: 20,
                                 ),
                                 TextButton(
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(builder: (context) => UserDetailPage()),
-                                    );
-                                  },
+                                  onPressed: () {},
                                   child: const Text(
                                     "Profile",
                                     style: TextStyle(
@@ -179,14 +169,13 @@ class _ProfilePageState extends State<ProfilePage> {
                                 TextButton(
                                   onPressed: () async {
                                     try {
-                                      // Sign out the user from Firebase Authentication
+
                                       await FirebaseAuth.instance.signOut();
 
-                                      // Redirect to the login page or any other page as needed
                                       Navigator.of(context).pushReplacementNamed(
-                                          '/login'); // Replace '/login' with your actual login page route
+                                          '/login');
                                     } catch (e) {
-                                      // Handle sign out errors
+
                                       print('Sign out error: $e');
                                     }
                                   },
@@ -206,7 +195,6 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                   ),
                 ),
-
               ),
             ),
           ],
